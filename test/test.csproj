@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Translate" Version="3.7.4.23" />
+    <PackageReference Include="IronPython" Version="2.7.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="RestSharp" Version="107.3.0" />
+    <PackageReference Include="YandexLinguistics.NET" Version="2.0.0" />
+    <PackageReference Include="YandexTranslateCoreSdk" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
