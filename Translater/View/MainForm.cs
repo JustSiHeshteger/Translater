@@ -1,5 +1,8 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Drawing;
+using System.IO;
 using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -31,7 +34,7 @@ namespace Translater.View
 
             _infoLabel = new Label()
             {
-                Font = new Font(FontFamily.GenericSansSerif, 10.0f, FontStyle.Regular),
+                Font = new System.Drawing.Font(FontFamily.GenericSansSerif, 10.0f, FontStyle.Regular),
                 AutoSize = false,
                 Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.BottomLeft,
@@ -70,7 +73,7 @@ namespace Translater.View
                 panel.Visible = false;
         }
 
-        private bool ConnectToInternet(IProgress<string> progress, int timeout_per_host_millis = 3000)
+        private bool ConnectToInternet(IProgress<string> progress, int timeout_per_host_millis = 10000)
         {
             bool network_available = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
 
@@ -134,17 +137,46 @@ namespace Translater.View
             return buffer[1];
         }
 
-        private void CheckBoxClick(object sender, EventArgs e)
-        {
-
-        }
-
         private void GenerateCharacter(object sender, EventArgs e)
         {
             var model = new CharacterModel();
             var character = new CharacterParam(model, Convert.ToBoolean(trackBar1.Value));
             character.ShowDialog();
             OriginalTB.Text = model.GetCharacter();
+        }
+
+        private void SetPdf(object sender, EventArgs e)
+        {
+            var path = "";
+
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.FileName = "Result";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    path = sfd.FileName;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            
+            var document = new Document(PageSize.A4, 20, 20, 30, 20);
+
+            using (var writer = PdfWriter.GetInstance(document, new FileStream($"{path}.pdf", FileMode.Create)))
+            {
+                document.Open();
+
+                string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALNBI.TTF");
+                var baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                var font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
+
+                document.Add(new Paragraph(TranslateTB.Text, font));
+
+                document.Close();
+            }
+                
         }
     }
 }

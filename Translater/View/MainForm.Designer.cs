@@ -35,6 +35,7 @@ namespace Translater.View
             this.panel5 = new System.Windows.Forms.Panel();
             this.OriginalTB = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.GenerateBtn = new System.Windows.Forms.Button();
             this.TranslateBtn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.TranslateTB = new System.Windows.Forms.TextBox();
@@ -46,7 +47,7 @@ namespace Translater.View
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.GenerateBtn = new System.Windows.Forms.Button();
+            this.SaveToPdfBtn = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -56,6 +57,7 @@ namespace Translater.View
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -122,16 +124,25 @@ namespace Translater.View
             // panel4
             // 
             this.panel4.Controls.Add(this.GenerateBtn);
-            this.panel4.Controls.Add(this.TranslateBtn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 400);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(499, 58);
             this.panel4.TabIndex = 0;
             // 
+            // GenerateBtn
+            // 
+            this.GenerateBtn.Location = new System.Drawing.Point(10, 10);
+            this.GenerateBtn.Name = "GenerateBtn";
+            this.GenerateBtn.Size = new System.Drawing.Size(163, 36);
+            this.GenerateBtn.TabIndex = 5;
+            this.GenerateBtn.Text = "Сгенерировать характеристику";
+            this.GenerateBtn.UseVisualStyleBackColor = true;
+            this.GenerateBtn.Click += new System.EventHandler(this.GenerateCharacter);
+            // 
             // TranslateBtn
             // 
-            this.TranslateBtn.Location = new System.Drawing.Point(12, 10);
+            this.TranslateBtn.Location = new System.Drawing.Point(10, 10);
             this.TranslateBtn.Name = "TranslateBtn";
             this.TranslateBtn.Size = new System.Drawing.Size(163, 36);
             this.TranslateBtn.TabIndex = 5;
@@ -161,6 +172,8 @@ namespace Translater.View
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.SaveToPdfBtn);
+            this.panel6.Controls.Add(this.TranslateBtn);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Location = new System.Drawing.Point(0, 400);
             this.panel6.Name = "panel6";
@@ -337,15 +350,15 @@ namespace Translater.View
             this.label1.TabIndex = 4;
             this.label1.Text = "Хорошо";
             // 
-            // GenerateBtn
+            // SaveToPdfBtn
             // 
-            this.GenerateBtn.Location = new System.Drawing.Point(181, 10);
-            this.GenerateBtn.Name = "GenerateBtn";
-            this.GenerateBtn.Size = new System.Drawing.Size(163, 36);
-            this.GenerateBtn.TabIndex = 5;
-            this.GenerateBtn.Text = "Сгенерировать характеристику";
-            this.GenerateBtn.UseVisualStyleBackColor = true;
-            this.GenerateBtn.Click += new System.EventHandler(this.GenerateCharacter);
+            this.SaveToPdfBtn.Location = new System.Drawing.Point(179, 10);
+            this.SaveToPdfBtn.Name = "SaveToPdfBtn";
+            this.SaveToPdfBtn.Size = new System.Drawing.Size(163, 36);
+            this.SaveToPdfBtn.TabIndex = 5;
+            this.SaveToPdfBtn.Text = "Сохранить в pdf";
+            this.SaveToPdfBtn.UseVisualStyleBackColor = true;
+            this.SaveToPdfBtn.Click += new System.EventHandler(this.SetPdf);
             // 
             // MainForm
             // 
@@ -366,6 +379,7 @@ namespace Translater.View
             this.panel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -395,5 +409,6 @@ namespace Translater.View
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button GenerateBtn;
+        private System.Windows.Forms.Button SaveToPdfBtn;
     }
 }

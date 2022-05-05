@@ -127,7 +127,7 @@ namespace Translater.Model
             {
                 if (string.IsNullOrWhiteSpace(_interests))
                     return "";
-                return $"Увлекается {_interests}";
+                return $"Увлекается {_interests}.\r\n";
             }
             set => _interests = value; 
         }
@@ -258,7 +258,7 @@ namespace Translater.Model
             get 
             {
                 if (_parenting == "демократическое")
-                    return "Воспитание в семье демократическое. Учитываются интересы ребенка; воспитывается в нем дисциплинированность, самостоятельность, инициативность.";
+                    return "Воспитание в семье демократическое. Учитываются интересы ребенка, воспитывается в нем дисциплинированность, самостоятельность, инициативность.";
 
                 if (_parenting == "авторитарное")
                     return "Воспитание в семье авторитарное. Требуется от ребенка беспрекословное подчинение, жесткий контроль всех сфер его жизни.";
@@ -273,11 +273,11 @@ namespace Translater.Model
 
         public string GetCharacter()
         {
-            string character = $"За время обучения {Surname} {Name} проявил себя {CharacterFirst}, {CharacterSecond}, " +
+            string character = $"\tЗа время обучения {Surname} {Name} проявил себя {CharacterFirst}, {CharacterSecond}, " +
                                $"{CharacterThird}, {CharacterFourth}, {CharacterFifth}, {CharacterSixth} учеником.\r\n" + 
                                $"{TalantsForEducation}, {Motivation}, {Perfomance}.\r\n" +
                                $"{Interests}" +
-                               $"{AllLife} {LifeWork} {PlaceInClass} {StyleInClass} {TeacherAttitude} {Reaction}\r\n" +
+                               $"\t{AllLife} {LifeWork} {PlaceInClass} {StyleInClass} {TeacherAttitude} {Reaction}\r\n" +
                                $"{Status} {Climat} {Parenting}";
             return character;
         }

@@ -266,9 +266,9 @@ namespace Translater.View
             // 
             this.comboBox10.FormattingEnabled = true;
             this.comboBox10.Items.AddRange(new object[] {
-            "сильные",
-            "средние",
-            "слабые"});
+            "сильная",
+            "средняя",
+            "слабая"});
             this.comboBox10.Location = new System.Drawing.Point(162, 207);
             this.comboBox10.Name = "comboBox10";
             this.comboBox10.Size = new System.Drawing.Size(121, 21);

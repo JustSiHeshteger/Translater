@@ -13,8 +13,8 @@ namespace Translater.View
 {
     public partial class CharacterParam : Form
     {
-        private CharacterModel _characterModel;
-        private bool _goodCharacter;
+        private readonly CharacterModel _characterModel;
+        private readonly bool _goodCharacter;
         public CharacterParam(CharacterModel cm, bool good)
         {
             InitializeComponent();
@@ -28,17 +28,15 @@ namespace Translater.View
             {
                 if (_goodCharacter)
                 {
-                    if (control is ComboBox)
+                    if (control is ComboBox cb)
                     {
-                        var cb = (ComboBox)control;
                         cb.SelectedIndex = 0;
                     }
                 }
                 else
                 {
-                    if (control is ComboBox)
+                    if (control is ComboBox cb)
                     {
-                        var cb = (ComboBox)control;
                         cb.SelectedIndex = cb.Items.Count - 1;
                     }
                 }
